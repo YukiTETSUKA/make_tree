@@ -29,7 +29,6 @@ if not File.exist? './assets/checkins_data.json'
 end
 
 $checkins.each do |key, value|
-  sleep(1)
   if key.is_a? ::String
     system "ruby make_tree.rb #{key}"
   end

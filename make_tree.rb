@@ -18,7 +18,6 @@ checkins = open('./assets/checkins_data.json') do |io|
 end
 
 profiles.each_with_index do |value, i|
-  # get_attr '', value
   raw_attributes = value['facebook_user']['raw_attributes']
   user_id = raw_attributes['id']
   have_been = checkins['user_ids'].find(proc){|item| item == user_id}
@@ -36,7 +35,26 @@ dec_tree.train
 
 # decision = dec_tree.predict(test)
 # puts "Predicted: #{decision} ... True decision: #{test.last}"
-puts ["\n", checkins['name'], dec_tree.build_rules, $training.classification.entropy]
+
+if $training.classification.entropy > 0.0
+  result = "success"
+  rules = dec_tree.build_rules
+else
+  result = "error"
+  rules  = ""
+end
+
+output = {
+  :result  => result,
+  :id      => ARGV[0],
+  :name    => checkins['name'],
+  :rules   => rules,
+  :entropy => $training.classification.entropy
+}
+
+open "./result/json/#{ARGV[0]}.json", "w" do |f|
+  f.write output.to_json
+end
 
 # Graph the tree, save to 'tree.png'
-dec_tree.graph(ARGV[0])
+dec_tree.graph("./result/img/#{ARGV[0]}")
