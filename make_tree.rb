@@ -31,17 +31,12 @@ end
 dec_tree = DecisionTree::ID3Tree.new($attributes, $training, true, gender: :discrete, hometown: :discrete, location: :discrete)
 dec_tree.train
 
-# test = [37, 'sick']
-
-# decision = dec_tree.predict(test)
-# puts "Predicted: #{decision} ... True decision: #{test.last}"
-
 if $training.classification.entropy > 0.0
   result = "success"
   rules = dec_tree.build_rules
 else
   result = "error"
-  rules  = ""
+  rules  = []
 end
 
 output = {
@@ -58,3 +53,8 @@ end
 
 # Graph the tree, save to 'tree.png'
 dec_tree.graph("./result/img/#{ARGV[0]}")
+
+test = ['male', 'Utsunomiya, Tochigi, Japan', 'Utsunomiya, Tochigi, Japan']
+
+decision = dec_tree.predict(test)
+puts "Predicted: #{decision} ... True decision: #{test.last}"
