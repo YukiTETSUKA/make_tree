@@ -40,3 +40,9 @@ profiles.json
   ]
 }
 ```
+
+プログラムの実行
+---
+```
+$ ./execution.sh
+```
