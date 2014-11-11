@@ -1,2 +1,2 @@
 rm ./result/json/*
-ruby checkins.rb
+time ruby checkins.rb
