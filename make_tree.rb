@@ -6,6 +6,7 @@ require 'json'
 require 'pp'
 
 $attributes = ['gender', 'hometown', 'location']
+# $attributes = ['gender', 'location', 'hometown']
 $training = []
 proc = Proc.new {false}
 
@@ -52,9 +53,9 @@ open "./result/json/#{ARGV[0]}.json", "w" do |f|
 end
 
 # Graph the tree, save to 'tree.png'
-dec_tree.graph("./result/img/#{ARGV[0]}")
+# dec_tree.graph("./result/img/#{ARGV[0]}")
 
-test = ['male', 'Utsunomiya, Tochigi, Japan', 'Utsunomiya, Tochigi, Japan']
-
-decision = dec_tree.predict(test)
-puts "Predicted: #{decision} ... True decision: #{test.last}"
+# test = ['male', 'Utsunomiya, Tochigi, Japan', 'Utsunomiya, Tochigi, Japan']
+#
+# decision = dec_tree.predict(test)
+# puts "Predicted: #{decision} ... True decision: #{test.last}"
