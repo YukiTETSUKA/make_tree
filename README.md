@@ -7,7 +7,7 @@
 * checkins.rb
 * executioin.sh
 * make_tree.rb
-* result/
+* result/ (automatic creation)
  * json/
  * img/
 
