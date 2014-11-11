@@ -1,15 +1,15 @@
 ディレクトリ構成
 ---
 
-* assets
+* assets/
  * checkins.json
  * profiles.json
 * checkins.rb
 * executioin.sh
 * make_tree.rb
-* result
- * json
- * img
+* result/
+ * json/
+ * img/
 
 checkins.json
 ---
